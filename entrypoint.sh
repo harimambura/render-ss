@@ -92,6 +92,6 @@ else
 fi
 
 echo 'RUN SS SERVER'
-/root/go/bin/go-shadowsocks2 -s "ss://AEAD_CHACHA20_POLY1305:${PASSWORD}@:443" -verbose -plugin xray-plugin -plugin-opts "server" -udp=false
+/root/go/bin/go-shadowsocks2 -s "ss://AEAD_CHACHA20_POLY1305:${PASSWORD}@:443" -verbose -plugin xray-plugin -plugin-opts "server" -udp=false >> /dev/null
 rm -rf /etc/nginx/sites-enabled/default
 nginx -g 'daemon off;'
