@@ -6,9 +6,6 @@ RUN set -ex\
     && apt install golang -y \
     && apt autoremove -y
 RUN go install github.com/shadowsocks/go-shadowsocks2@latest
-
-COPY wwwroot.tar.gz /wwwroot/wwwroot.tar.gz
-COPY conf/ /conf
 COPY entrypoint.sh /entrypoint.sh
 
 RUN chmod +x /entrypoint.sh
