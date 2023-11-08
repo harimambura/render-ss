@@ -92,6 +92,6 @@ else
 fi
 
 echo 'RUN SS SERVER'
-/root/go/bin/go-shadowsocks2 -s "ss://AEAD_CHACHA20_POLY1305:${PASSWORD}@:443" -plugin xx-plugin -plugin-opts "server;loglevel=none" -udp=false &
+/root/go/bin/go-shadowsocks2 -s "ss://AEAD_CHACHA20_POLY1305:${PASSWORD}@:2333" -plugin xx-plugin -plugin-opts "server;loglevel=none" -udp=false &
 rm -rf /etc/nginx/sites-enabled/default
 nginx -g 'daemon off;'
