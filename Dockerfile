@@ -12,6 +12,7 @@ COPY wwwroot.tar.gz /wwwroot/wwwroot.tar.gz
 COPY conf/ /conf
 COPY entrypoint.sh /entrypoint.sh
 
+USER root
 RUN chmod +x /entrypoint.sh
 
 CMD /entrypoint.sh
