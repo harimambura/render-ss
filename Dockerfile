@@ -11,10 +11,9 @@ RUN go install github.com/shadowsocks/go-shadowsocks2@latest
 
 COPY wwwroot.tar.gz /wwwroot/wwwroot.tar.gz
 COPY conf/ /conf
-COPY entrypoint.sh /tmp/entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
-WORKDIR /tmp
-RUN chmod +x /tmp/entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 ENV PATH="$GOPATH/bin:$PATH"
-CMD /tmp/entrypoint.sh
+CMD /entrypoint.sh
