@@ -43,7 +43,7 @@ echo ${XRAY_URL}
 wget --no-check-certificate ${XRAY_URL}
 tar -zxvf xray-plugin-linux-amd64-$V_VER.tar.gz
 rm -rf xray-plugin-linux-amd64-$V_VER.tar.gz
-mv xray-plugin_linux_amd64 /xray-plugin
+mv xray-plugin_linux_amd64 /xx-plugin
 rm -rf /xraybin
 
 cd /wwwroot
@@ -92,6 +92,6 @@ else
 fi
 
 echo 'RUN SS SERVER'
-/root/go/bin/go-shadowsocks2 -s "ss://AEAD_CHACHA20_POLY1305:${PASSWORD}@:443" -verbose -plugin xray-plugin -plugin-opts "server" -udp=false >> /dev/null
+/root/go/bin/go-shadowsocks2 -s "ss://AEAD_CHACHA20_POLY1305:${PASSWORD}@:443" -plugin xx-plugin -plugin-opts "server;loglevel=none" -udp=false >> /dev/null
 rm -rf /etc/nginx/sites-enabled/default
 nginx -g 'daemon off;'
