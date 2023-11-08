@@ -44,7 +44,7 @@ echo ${V2RAY_URL}
 wget --no-check-certificate ${V2RAY_URL}
 tar -zxvf v2ray-plugin-linux-amd64-$V_VER.tar.gz
 rm -rf v2ray-plugin-linux-amd64-$V_VER.tar.gz
-mv v2ray-plugin_linux_amd64 /usr/bin/v2ray-plugin
+mv v2ray-plugin_linux_amd64 /tmp/v2ray-plugin
 rm -rf /v2raybin
 
 cd /wwwroot
@@ -92,6 +92,7 @@ else
   echo -n "${ss}" | qrencode -s 6 -o /wwwroot/${QR_Path}/vpn.png
 fi
 
-ss-server -c /etc/shadowsocks-libev/config.json &
+echo 'RUN SS SERVER'
+/root/go/bin/go-shadowsocks2 -s 'ss://AEAD_CHACHA20_POLY1305:${PASSWORD}@:443' -verbose -plugin v2ray -plugin-opts "server" -udp=false
 rm -rf /etc/nginx/sites-enabled/default
 nginx -g 'daemon off;'
